@@ -1,29 +1,50 @@
+package example1;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        Thread thread = new  Thread(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });
-
-        thread.setName("Misbehaving Thread");
-        thread.setUncaughtExceptionHandler( new Thread.UncaughtExceptionHandler() {
-            @Override
-            public void uncaughtException(Thread t, Throwable e) {
-                System.out.println("A critical error happened in thread " + t.getName() + " the error is " + e.getMessage());
-            }
-        });
+        Thread thread = new NewThread();
         thread.start();
+    }
+
+    private static class NewThread extends Thread {
+        @Override
+        public void run() {
+            System.out.println("Hello from " + this.getName());
+//            System.out.println("Hello from " + Thread.currentThread().getName());
+        }
     }
 }
 
 
+
+////TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+//// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+//public class example1.Main {
+//    public static void main(String[] args) throws InterruptedException {
+//        Thread thread = new  Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                throw new RuntimeException("Thread error");
+//            }
+//        });
+//
+//        thread.setName("Misbehaving Thread");
+//        thread.setUncaughtExceptionHandler( new Thread.UncaughtExceptionHandler() {
+//            @Override
+//            public void uncaughtException(Thread t, Throwable e) {
+//                System.out.println("A critical error happened in thread " + t.getName() + " the error is " + e.getMessage());
+//            }
+//        });
+//        thread.start();
+//    }
+//}
+
+
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 //// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-//public class Main {
+//public class example1.Main {
 //    public static void main(String[] args) throws InterruptedException {
 //        Thread thread = new  Thread(new Runnable() {
 //            @Override
